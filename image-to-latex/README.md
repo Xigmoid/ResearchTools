@@ -40,6 +40,24 @@ tree.png  ✓
 
 The result is `tree.png` — a rendered LaTeX figure you can drop into your own paper. If a branch is in the wrong place or a citation is missing, you say *"fix X"* and the skill iterates.
 
+### Real examples
+
+Two paper-taxonomy figures the skill has reproduced end-to-end, with the source `.tex` files bundled in `examples/`:
+
+**Example 1 — LLM Role-Playing taxonomy** (3 L1 branches × multi-level sub-categories × pale-yellow citation leaves). Source: a survey-paper screenshot.
+
+![LLM Role-Playing taxonomy](examples/taxonomy-llm-role-playing.png)
+
+→ `examples/taxonomy-llm-role-playing.tex` (4.6 KB, compiles in ~1 s with `pdflatex`).
+
+**Example 2 — LLMs survey taxonomy** (4 L1 branches × 8 L2 sub-categories × numbered `[8]…[69]` citation leaves, light blue). Source: a phone-camera shot of a survey figure.
+
+![LLMs survey taxonomy](examples/taxonomy-llms-survey.png)
+
+→ `examples/taxonomy-llms-survey.tex` (3.8 KB, same `forest` machinery, just different colors and a deeper tree).
+
+Both render with the same `forest` + `xcolor` pattern from `references/tree.md` — only the `\definecolor` values and the bracket count change between them. The skill picks up the differences automatically once it sees the source image.
+
 ---
 
 ## The visual feedback loop
@@ -163,13 +181,18 @@ image-to-latex/
 ├── scripts/
 │   ├── compile_and_preview.sh   # pdflatex + sips, prints PNG path
 │   └── grade.py                 # assertion-based grader
-└── assets/                 # starting templates (copy one, then edit)
-    ├── tree-template.tex
-    ├── table-template.tex
-    ├── math-template.tex
-    ├── flowchart-template.tex
-    ├── code-template.tex
-    └── mixed-page-template.tex
+├── assets/                 # starting templates (copy one, then edit)
+│   ├── tree-template.tex
+│   ├── table-template.tex
+│   ├── math-template.tex
+│   ├── flowchart-template.tex
+│   ├── code-template.tex
+│   └── mixed-page-template.tex
+└── examples/               # worked end-to-end reproductions
+    ├── taxonomy-llm-role-playing.tex
+    ├── taxonomy-llm-role-playing.png
+    ├── taxonomy-llms-survey.tex
+    └── taxonomy-llms-survey.png
 ```
 
 ---
